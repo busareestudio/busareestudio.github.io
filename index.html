@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover elegant sarees at BU Saree Studio. Shop traditional and contemporary styles.">
+<title>BU Saree Studio | Elegance Woven in Every Thread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#541d37;--rose:#b94e72;--pink:#f8e8ed;--gold:#c69a4b;--cream:#fffaf5;--ink:#30232a}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Poppins,Arial,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#fffaf5ee;backdrop-filter:blur(12px);border-bottom:1px solid #ead9dc}
+.nav{max-width:1160px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font:700 25px 'Playfair Display',serif;color:var(--wine)}.logo small{display:block;font:10px Poppins;letter-spacing:3px;color:var(--gold);text-align:center}
+nav{display:flex;gap:22px;font-size:13px}nav a:hover{color:var(--rose)}.cart-btn,.primary{border:0;background:var(--wine);color:white;border-radius:30px;padding:11px 18px}.cart-btn span{background:var(--gold);color:#281720;border-radius:50%;padding:2px 7px;margin-left:5px}
+.hero{background:linear-gradient(90deg,#3c172b 0%,#6a2c49 55%,#9a526b 100%);color:white;min-height:440px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:50px max(calc((100vw - 1160px)/2),24px);gap:30px;overflow:hidden}
+.eyebrow{color:#e8c98c;letter-spacing:3px;font-size:11px;font-weight:600}.hero h1{font:600 clamp(38px,5vw,62px)/1.08 'Playfair Display',serif;margin:15px 0}.hero p{color:#f6e7ed;line-height:1.8;max-width:500px;font-size:14px}.hero .primary{background:var(--gold);color:#321827;margin-top:14px;font-weight:600}
+.hero-art{height:330px;border:1px solid #d4ad6b88;border-radius:48% 48% 8px 8px;background:linear-gradient(145deg,#f6dbe4,#b85e7b 48%,#5c203c);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 60px #4b1830aa,0 20px 50px #1e0c1a55;position:relative}
+.hero-art:before{content:"";position:absolute;inset:18px;border:1px solid #f5d99b;border-radius:48% 48% 5px 5px}
+.hero-art div{font:600 27px 'Playfair Display',serif;text-align:center;color:#fff4e6;text-shadow:0 3px 12px #46172e;padding:20px}
+.wrap{max-width:1160px;margin:auto;padding:54px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head .eyebrow{color:var(--rose)}h2{font:600 34px 'Playfair Display',serif;color:var(--wine);margin:8px 0}.section-head p{font-size:13px;color:#786871}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{padding:22px 12px;border:1px solid #ead6dc;border-radius:12px;text-align:center;background:white}.category b{font:600 18px 'Playfair Display';color:var(--wine)}.category p{font-size:11px;color:#887780;margin:7px 0 0}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:white;border:1px solid #efdee3;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #59243b0b}.product-art{height:245px;display:grid;place-items:center;color:white;font:600 23px 'Playfair Display';text-align:center;padding:20px;background:linear-gradient(135deg,#dba5b7,#742c4c)}.product:nth-child(2) .product-art{background:linear-gradient(135deg,#e5c98d,#8a5a26)}.product:nth-child(3) .product-art{background:linear-gradient(135deg,#b7c6ad,#365b4b)}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{font-weight:600;color:var(--wine);margin:12px 0}.actions{display:flex;gap:8px}.actions button{flex:1;border:1px solid var(--wine);border-radius:25px;padding:9px 7px;font-size:11px}.actions .add{background:var(--wine);color:white}
+.story{background:var(--pink);border-radius:18px;padding:35px;text-align:center}.story p{max-width:720px;margin:12px auto;color:#705b64;line-height:1.8;font-size:13px}
+footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}footer .logo{color:#f5d99b}footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:center;gap:20px;font-size:12px;margin:18px}
+.overlay{display:none;position:fixed;inset:0;background:#1d1018aa;z-index:10;justify-content:flex-end}.drawer{background:#fffaf5;width:min(440px,100%);height:100%;padding:24px;overflow:auto}.drawer-top{display:flex;justify-content:space-between;align-items:center}.drawer h2{font-size:27px}.close{border:0;background:none;font-size:26px}.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ead9dc;padding:14px 0;font-size:13px}.cart-line button{border:0;background:none;color:#a13c5d}.total{display:flex;justify-content:space-between;font-weight:600;margin:20px 0}.checkout{width:100%;margin:7px 0;padding:13px;border:0;border-radius:25px;background:var(--wine);color:white}.checkout.alt{background:#238b59}.note{font-size:11px;color:#82717a;line-height:1.6}
+@media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{height:220px}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr}.wrap{padding:40px 18px}.story{padding:25px 18px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<a class="logo" href="#">BU Saree Studio<small>TRADITION • BEAUTY • ELEGANCE</small></a>
+<nav><a href="#home">Home</a><a href="#collections">Collections</a><a href="#about">Our Story</a><a href="#contact">Contact</a></nav>
+<button class="cart-btn" onclick="openCart()">Bag <span id="cartCount">0</span></button>
+</div></header>
+<main>
+<section class="hero" id="home">
+<div><div class="eyebrow">A CELEBRATION OF EVERY THREAD</div><h1>Elegance Woven<br>in Every Thread.</h1><p>Discover sarees that bring together timeless Indian craftsmanship and the beauty of modern style. Find the drape for your every special moment.</p><a class="primary" href="#collections">Explore Collection</a></div>
+<div class="hero-art"><div>BU<br>SAREE STUDIO<br><small style="font:11px Poppins;letter-spacing:3px">A TOUCH OF TRADITION</small></div></div>
+</section>
+<section class="wrap" id="collections">
+<div class="section-head"><div class="eyebrow">CURATED FOR YOU</div><h2>Shop Our Collections</h2><p>Choose a style that tells your story.</p></div>
+<div class="categories">
+<div class="category"><b>Silk Sarees</b><p>Classic festive elegance</p></div><div class="category"><b>Cotton Sarees</b><p>Everyday comfort</p></div><div class="category"><b>Designer Sarees</b><p>Contemporary statements</p></div><div class="category"><b>Party Wear</b><p>For your special moments</p></div>
+</div>
+</section>
+<section class="wrap" style="padding-top:5px">
+<div class="section-head"><div class="eyebrow">THE STUDIO EDIT</div><h2>Featured Sarees</h2><p>Sample listings — replace names, photos and prices with your actual products.</p></div>
+<div class="products" id="productGrid"></div>
+</section>
+<section class="wrap" id="about"><div class="story"><div class="eyebrow">OUR STORY</div><h2>Tradition, with a personal touch.</h2><p>Welcome to BU Saree Studio. We celebrate the beauty of sarees and the stories woven into them. From everyday favourites to occasion-ready drapes, our goal is to help you find something that feels truly yours.</p></div></section>
+</main>
+<footer id="contact"><div class="logo">BU Saree Studio</div><p>Elegance Woven in Every Thread</p><div class="foot-links"><a href="#collections">Shop</a><a href="#about">About</a><a href="#" onclick="contactWhatsApp();return false">WhatsApp</a></div><p>© <span id="year"></span> BU Saree Studio. All rights reserved.</p></footer>
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-top"><h2>Your Shopping Bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="checkout alt" onclick="whatsappCheckout()">Order on WhatsApp</button><button class="checkout" onclick="onlinePayment()">Pay Online</button><p class="note">Online payment must be connected to your own verified payment-gateway account before accepting payments. This starter website does not collect or process card/UPI details itself.</p></aside></div>
+<script>
+/* SETUP: Replace this with your WhatsApp number including country code, digits only. Example India: 919876543210 */
+const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+/* Add your Razorpay Key ID after creating a merchant account. A secure backend is also required to create and verify payment orders. */
+const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
+const products = [
+ {id:1,name:"Blush Pink Festive Saree",category:"Party Wear",price:2499,desc:"Elegant occasion-wear sample"},
+ {id:2,name:"Golden Heritage Saree",category:"Silk Sarees",price:3999,desc:"Traditional-inspired sample"},
+ {id:3,name:"Emerald Grace Saree",category:"Designer Sarees",price:2899,desc:"Contemporary style sample"}
+];
+let cart=[];
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function renderProducts(){document.getElementById("productGrid").innerHTML=products.map(p=>`<article class="product"><div class="product-art">${p.name}</div><div class="product-info"><h3>${p.name}</h3><div class="muted">${p.category} · ${p.desc}</div><div class="price">${money(p.price)}</div><div class="actions"><button class="add" onclick="addToCart(${p.id})">Add to Bag</button><button onclick="orderSingle(${p.id})">WhatsApp</button></div></div></article>`).join("")}
+function addToCart(id){const p=products.find(x=>x.id===id);const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({...p,qty:1});renderCart();document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function renderCart(){const el=document.getElementById("cartItems");el.innerHTML=cart.length?cart.map(p=>`<div class="cart-line"><div><b>${p.name}</b><br>${money(p.price)} × ${p.qty}</div><div><b>${money(p.price*p.qty)}</b><br><button onclick="removeItem(${p.id})">Remove</button></div></div>`).join(""):"<p>Your bag is empty. Explore our collection to add a saree.</p>";document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);renderCart()}
+function openCart(){document.getElementById("cartOverlay").style.display="flex";renderCart()}function closeCart(){document.getElementById("cartOverlay").style.display="none"}
+function validWhatsApp(){if(!/^91\d{10}$/.test(WHATSAPP_NUMBER)){alert("Please add your WhatsApp number in the website setup before using WhatsApp orders.");return false}return true}
+function sendWhatsApp(message){if(!validWhatsApp())return;window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank")}
+function contactWhatsApp(){sendWhatsApp("Hello BU Saree Studio! I would like to know more about your saree collection.")}
+function orderSingle(id){const p=products.find(x=>x.id===id);sendWhatsApp("Hello BU Saree Studio! I am interested in: "+p.name+" ("+money(p.price)+"). Please share availability and delivery details.")}
+function whatsappCheckout(){if(!cart.length){alert("Your bag is empty.");return}const lines=cart.map(p=>p.name+" × "+p.qty+" — "+money(p.price*p.qty)).join("\n");sendWhatsApp("Hello BU Saree Studio! I would like to place an order:\n"+lines+"\nTotal: "+money(cart.reduce((s,x)=>s+x.price*x.qty,0))+"\nPlease confirm availability, delivery charges and payment details.");}
+function onlinePayment(){alert("Online payment is not active yet. To enable it, connect a verified Razorpay account and a secure server-side order creation and payment verification flow. For now, please use Order on WhatsApp.");}
+document.getElementById("year").textContent=new Date().getFullYear();renderProducts();renderCart();
+</script>
+</body></html>
