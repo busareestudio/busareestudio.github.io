@@ -46,7 +46,32 @@ display:block;
 }
 .wrap{max-width:1160px;margin:auto;padding:54px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head .eyebrow{color:var(--rose)}h2{font:600 34px 'Playfair Display',serif;color:var(--wine);margin:8px 0}.section-head p{font-size:13px;color:#786871}
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{padding:22px 12px;border:1px solid #ead6dc;border-radius:12px;text-align:center;background:white}.category b{font:600 18px 'Playfair Display';color:var(--wine)}.category p{font-size:11px;color:#887780;margin:7px 0 0}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:white;border:1px solid #efdee3;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #59243b0b}.product-art{height:245px;display:grid;place-items:center;color:white;font:600 23px 'Playfair Display';text-align:center;padding:20px;background:linear-gradient(135deg,#dba5b7,#742c4c)}.product:nth-child(2) .product-art{background:linear-gradient(135deg,#e5c98d,#8a5a26)}.product:nth-child(3) .product-art{background:linear-gradient(135deg,#b7c6ad,#365b4b)}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{font-weight:600;color:var(--wine);margin:12px 0}.actions{display:flex;gap:8px}.actions button{flex:1;border:1px solid var(--wine);border-radius:25px;padding:9px 7px;font-size:11px}.actions .add{background:var(--wine);color:white}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:white;border:1px solid #efdee3;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #59243b0b}.product-image {
+  height: 340px;
+  overflow: hidden;
+  background: #f8e8ed;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.product:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px #59243b20;
+}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{font-weight:600;color:var(--wine);margin:12px 0}.actions{display:flex;gap:8px}.actions button{flex:1;border:1px solid var(--wine);border-radius:25px;padding:9px 7px;font-size:11px}.actions .add{background:var(--wine);color:white}
 .story{background:var(--pink);border-radius:18px;padding:35px;text-align:center}.story p{max-width:720px;margin:12px auto;color:#705b64;line-height:1.8;font-size:13px}
 footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}footer .logo{color:#f5d99b}footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:center;gap:20px;font-size:12px;margin:18px}
 .overlay{display:none;position:fixed;inset:0;background:#1d1018aa;z-index:10;justify-content:flex-end}.drawer{background:#fffaf5;width:min(440px,100%);height:100%;padding:24px;overflow:auto}.drawer-top{display:flex;justify-content:space-between;align-items:center}.drawer h2{font-size:27px}.close{border:0;background:none;font-size:26px}.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ead9dc;padding:14px 0;font-size:13px}.cart-line button{border:0;background:none;color:#a13c5d}.total{display:flex;justify-content:space-between;font-weight:600;margin:20px 0}.checkout{width:100%;margin:7px 0;padding:13px;border:0;border-radius:25px;background:var(--wine);color:white}.checkout.alt{background:#238b59}.note{font-size:11px;color:#82717a;line-height:1.6}
@@ -114,13 +139,51 @@ const WHATSAPP_NUMBER = "918142897113";
 /* Add your Razorpay Key ID after creating a merchant account. A secure backend is also required to create and verify payment orders. */
 const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
 const products = [
- {id:1,name:"Blush Pink Festive Saree",category:"Party Wear",price:2499,desc:"Elegant occasion-wear sample"},
- {id:2,name:"Golden Heritage Saree",category:"Silk Sarees",price:3999,desc:"Traditional-inspired sample"},
- {id:3,name:"Emerald Grace Saree",category:"Designer Sarees",price:2899,desc:"Contemporary style sample"}
+ {
+  id:1,
+  name:"Blush Pink Saree",
+  category:"Party Wear",
+  price:2499,
+  desc:"Elegant occasion wear",
+  image:"saree1.jpeg"
+ },
+ {
+  id:2,
+  name:"Golden Heritage Saree",
+  category:"Silk Sarees",
+  price:3999,
+  desc:"Traditional elegance",
+  image:"saree2.jpeg"
+ },
+ {
+  id:3,
+  name:"Emerald Grace Saree",
+  category:"Designer Sarees",
+  price:2899,
+  desc:"Contemporary style",
+  image:"saree3.jpeg"
+ }
 ];
 let cart=[];
 const money=n=>"₹"+n.toLocaleString("en-IN");
-function renderProducts(){document.getElementById("productGrid").innerHTML=products.map(p=>`<article class="product"><div class="product-art">${p.name}</div><div class="product-info"><h3>${p.name}</h3><div class="muted">${p.category} · ${p.desc}</div><div class="price">${money(p.price)}</div><div class="actions"><button class="add" onclick="addToCart(${p.id})">Add to Bag</button><button onclick="orderSingle(${p.id})">WhatsApp</button></div></div></article>`).join("")}
+function renderProducts(){
+ document.getElementById("productGrid").innerHTML=products.map(p=>`
+ <article class="product">
+   <div class="product-image">
+     <img src="${p.image}" alt="${p.name}">
+   </div>
+   <div class="product-info">
+     <h3>${p.name}</h3>
+     <div class="muted">${p.category} · ${p.desc}</div>
+     <div class="price">${money(p.price)}</div>
+     <div class="actions">
+       <button class="add" onclick="addToCart(${p.id})">Add to Bag</button>
+       <button onclick="orderSingle(${p.id})">WhatsApp</button>
+     </div>
+   </div>
+ </article>
+ `).join("");
+}
 function addToCart(id){const p=products.find(x=>x.id===id);const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({...p,qty:1});renderCart();document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
 function renderCart(){const el=document.getElementById("cartItems");el.innerHTML=cart.length?cart.map(p=>`<div class="cart-line"><div><b>${p.name}</b><br>${money(p.price)} × ${p.qty}</div><div><b>${money(p.price*p.qty)}</b><br><button onclick="removeItem(${p.id})">Remove</button></div></div>`).join(""):"<p>Your bag is empty. Explore our collection to add a saree.</p>";document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
 function removeItem(id){cart=cart.filter(x=>x.id!==id);renderCart()}
