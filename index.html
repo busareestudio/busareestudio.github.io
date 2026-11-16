@@ -22,9 +22,28 @@ header{position:sticky;top:0;z-index:5;background:#fffaf5ee;backdrop-filter:blur
 nav{display:flex;gap:22px;font-size:13px}nav a:hover{color:var(--rose)}.cart-btn,.primary{border:0;background:var(--wine);color:white;border-radius:30px;padding:11px 18px}.cart-btn span{background:var(--gold);color:#281720;border-radius:50%;padding:2px 7px;margin-left:5px}
 .hero{background:linear-gradient(90deg,#3c172b 0%,#6a2c49 55%,#9a526b 100%);color:white;min-height:440px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:50px max(calc((100vw - 1160px)/2),24px);gap:30px;overflow:hidden}
 .eyebrow{color:#e8c98c;letter-spacing:3px;font-size:11px;font-weight:600}.hero h1{font:600 clamp(38px,5vw,62px)/1.08 'Playfair Display',serif;margin:15px 0}.hero p{color:#f6e7ed;line-height:1.8;max-width:500px;font-size:14px}.hero .primary{background:var(--gold);color:#321827;margin-top:14px;font-weight:600}
-.hero-art{height:330px;border:1px solid #d4ad6b88;border-radius:48% 48% 8px 8px;background:linear-gradient(145deg,#f6dbe4,#b85e7b 48%,#5c203c);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 60px #4b1830aa,0 20px 50px #1e0c1a55;position:relative}
-.hero-art:before{content:"";position:absolute;inset:18px;border:1px solid #f5d99b;border-radius:48% 48% 5px 5px}
-.hero-art div{font:600 27px 'Playfair Display',serif;text-align:center;color:#fff4e6;text-shadow:0 3px 12px #46172e;padding:20px}
+.hero-art{
+height:330px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:transparent;
+border:0;
+box-shadow:none;
+}
+
+.hero-art:before{
+display:none;
+}
+
+.hero-art img{
+max-width:100%;
+max-height:330px;
+width:auto;
+height:auto;
+object-fit:contain;
+display:block;
+}
 .wrap{max-width:1160px;margin:auto;padding:54px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head .eyebrow{color:var(--rose)}h2{font:600 34px 'Playfair Display',serif;color:var(--wine);margin:8px 0}.section-head p{font-size:13px;color:#786871}
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{padding:22px 12px;border:1px solid #ead6dc;border-radius:12px;text-align:center;background:white}.category b{font:600 18px 'Playfair Display';color:var(--wine)}.category p{font-size:11px;color:#887780;margin:7px 0 0}
 .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:white;border:1px solid #efdee3;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #59243b0b}.product-art{height:245px;display:grid;place-items:center;color:white;font:600 23px 'Playfair Display';text-align:center;padding:20px;background:linear-gradient(135deg,#dba5b7,#742c4c)}.product:nth-child(2) .product-art{background:linear-gradient(135deg,#e5c98d,#8a5a26)}.product:nth-child(3) .product-art{background:linear-gradient(135deg,#b7c6ad,#365b4b)}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{font-weight:600;color:var(--wine);margin:12px 0}.actions{display:flex;gap:8px}.actions button{flex:1;border:1px solid var(--wine);border-radius:25px;padding:9px 7px;font-size:11px}.actions .add{background:var(--wine);color:white}
@@ -45,7 +64,9 @@ footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}foot
 <main>
 <section class="hero" id="home">
 <div><div class="eyebrow">A CELEBRATION OF EVERY THREAD</div><h1>Elegance Woven<br>in Every Thread.</h1><p>Discover sarees that bring together timeless Indian craftsmanship and the beauty of modern style. Find the drape for your every special moment.</p><a class="primary" href="#collections">Explore Collection</a></div>
-<div class="hero-art"><div>BU<br>SAREE STUDIO<br><small style="font:11px Poppins;letter-spacing:3px">A TOUCH OF TRADITION</small></div></div>
+<div class="hero-art">
+<img src="bu-logo.png" alt="BU Saree Studio - A Touch of Tradition">
+</div>
 </section>
 <section class="wrap" id="collections">
 <div class="section-head"><div class="eyebrow">CURATED FOR YOU</div><h2>Shop Our Collections</h2><p>Choose a style that tells your story.</p></div>
