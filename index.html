@@ -80,9 +80,33 @@ footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}foot
 </section>
 <section class="wrap" id="about"><div class="story"><div class="eyebrow">OUR STORY</div><h2>Tradition, with a personal touch.</h2><p>Welcome to BU Saree Studio. We celebrate the beauty of sarees and the stories woven into them. From everyday favourites to occasion-ready drapes, our goal is to help you find something that feels truly yours.</p></div></section>
 </main>
-<footer id="contact"><div class="logo">
-  <img src="bu-logo.png" alt="BU Saree Studio">
-</div><p>Elegance Woven in Every Thread</p><div class="foot-links"><a href="#collections">Shop</a><a href="#about">About</a><a href="#" onclick="contactWhatsApp();return false">WhatsApp</a><a href="mailto:busareestudio@gmail.com">Email Us</a></div><p>© <span id="year"></span> BU Saree Studio. All rights reserved.</p></footer>
+<footer id="contact">
+  <h2 style="color:#f5d99b;">CONTACT US</h2>
+
+  <div class="logo">
+    <img src="bu-logo.png" alt="BU Saree Studio">
+  </div>
+
+  <p>A Touch of Tradition</p>
+
+  <p>
+    <strong>Phone / WhatsApp:</strong><br>
+    <a href="tel:+918142897113">+91 81428 97113</a>
+  </p>
+
+  <p>
+    <strong>Email:</strong><br>
+    <a href="mailto:busareestudio@gmail.com">busareestudio@gmail.com</a>
+  </p>
+
+  <div class="foot-links">
+    <a href="#collections">Shop</a>
+    <a href="#about">About</a>
+    <a href="#" onclick="contactWhatsApp();return false">WhatsApp Us</a>
+  </div>
+
+  <p>© <span id="year"></span> BU Saree Studio. All rights reserved.</p>
+</footer>
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-top"><h2>Your Shopping Bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="checkout alt" onclick="whatsappCheckout()">Order on WhatsApp</button><button class="checkout" onclick="onlinePayment()">Pay Online</button><p class="note">Online payment must be connected to your own verified payment-gateway account before accepting payments. This starter website does not collect or process card/UPI details itself.</p></aside></div>
 <script>
 /* SETUP: Replace this with your WhatsApp number including country code, digits only. Example India: 919876543210 */
