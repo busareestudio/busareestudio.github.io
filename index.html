@@ -890,16 +890,32 @@ localStorage.setItem("buFavorites", JSON.stringify(favorites));
         <h3 onclick="window.location.href='product-details.html?id=${p.id}'"
           style="cursor:pointer">${p.name}</h3>
         <div class="muted">${p.category} · ${p.desc}</div>
-        <div class="price">${money(p.price)}</div>
+        <div class="price">
+  ${money(p.price)}
+  ${p.originalPrice ? `
+    <span class="original-price">${money(p.originalPrice)}</span>
+    <span class="discount-badge">${Math.round((1 - p.price / p.originalPrice) * 100)}% OFF</span>
+  ` : ""}
+</div>
         <div class="actions">
           <button class="add" onclick="addToCart(${p.id})">🛍 Add to Bag</button>
           <button class="whatsapp-order" onclick="orderSingle(${p.id})">Order on WhatsApp</button>
+          <button class="remove" onclick="removeRecentlyViewed(${p.id})">✕ Remove</button>
         </div>
       </div>
     </article>
   `).join("");
 
   emptyMessage.style.display = viewedProducts.length ? "none" : "block";
+}
+  function removeRecentlyViewed(id) {
+  let viewedIds = JSON.parse(localStorage.getItem("buRecentlyViewed")) || [];
+
+  viewedIds = viewedIds.filter(itemId => itemId !== id);
+
+  localStorage.setItem("buRecentlyViewed", JSON.stringify(viewedIds));
+
+  renderRecentlyViewed();
 }
   function addToCart(id) {
   const p = products.find(x => x.id === id);
