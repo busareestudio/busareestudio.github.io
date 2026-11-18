@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Meet Umadevi, founder of BU Saree Studio.">
+<title>Our Founder | BU Saree Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --wine: #541d37;
+  --gold: #c69a4b;
+  --cream: #fffaf5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: #30232a;
+  font-family: Poppins, Arial, sans-serif;
+}
+
+header {
+  background: #fffaf5;
+  border-bottom: 1px solid #ead9dc;
+  padding: 14px 22px;
+}
+
+.nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.logo img {
+  height: 75px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.home-link {
+  background: var(--wine);
+  color: white;
+  padding: 11px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 65px 22px;
+}
+
+.founder-layout {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.founder-photo {
+  text-align: center;
+}
+
+.founder-photo img {
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+h1 {
+  font: 600 clamp(36px, 5vw, 52px)/1.1 'Playfair Display', serif;
+  color: var(--wine);
+  margin: 14px 0;
+}
+
+h2 {
+  font: 500 18px 'Playfair Display', serif;
+  color: var(--gold);
+  margin: 0 0 25px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 2;
+  color: #66515b;
+}
+
+.tagline {
+  margin-top: 28px;
+  color: var(--gold);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+footer {
+  background: #351426;
+  color: #f8eaf0;
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  main {
+    padding: 38px 18px;
+  }
+
+  .founder-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .founder-photo img {
+    max-width: 300px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">
+      <img src="bu-logo.png?v=2" alt="BU Saree Studio">
+    </a>
+
+    <a class="home-link" href="index.html">← Back to Home</a>
+  </div>
+</header>
+
+<main>
+  <section class="founder-layout">
+
+    <div class="founder-photo">
+      <img
+        src="bu_saree_studio_founder_banner.png"
+        alt="Umadevi, founder of BU Saree Studio"
+      >
+    </div>
+
+    <div class="founder-content">
+      <div class="eyebrow">MEET OUR FOUNDER</div>
+
+      <h1>Umadevi</h1>
+
+      <h2>Founder · BU Saree Studio</h2>
+
+      <p>
+        At BU Saree Studio, we celebrate the beauty of Indian
+        tradition through sarees chosen to bring elegance
+        to every occasion.
+      </p>
+
+      <p>Thank you for being part of our journey.</p>
+
+      <div class="tagline">A Touch of Tradition</div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  © BU Saree Studio. A Touch of Tradition.
+</footer>
+
+</body>
+</html>
