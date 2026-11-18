@@ -83,7 +83,29 @@ display:none;
 }
 .wrap{max-width:1160px;margin:auto;padding:54px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head .eyebrow{color:var(--rose)}h2{font:600 34px 'Playfair Display',serif;color:var(--wine);margin:8px 0}.section-head p{font-size:13px;color:#786871}
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{padding:22px 12px;border:1px solid #ead6dc;border-radius:12px;text-align:center;background:white}.category b{font:600 18px 'Playfair Display';color:var(--wine)}.category p{font-size:11px;color:#887780;margin:7px 0 0}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{
+.search-container {
+  max-width: 550px;
+  margin: 0 auto 30px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #d8b878;
+  border-radius: 30px;
+  background: #fff;
+  color: #541d37;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(84,29,55,0.07);
+}
+
+.search-container input:focus {
+  border-color: #8b1e3f;
+  box-shadow: 0 0 0 3px #f8e8ed;
+}
+  .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{
   background:#fff;
   border:1px solid #eadde1;
   border-radius:20px;
@@ -555,7 +577,15 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 </section>
 <section class="wrap" style="padding-top:5px">
 <div class="section-head"><div class="eyebrow">THE STUDIO EDIT</div><h2>Featured Sarees</h2><p>Sample listings — replace names, photos and prices with your actual products.</p></div>
-<div class="products" id="productGrid"></div>
+<div class="search-container">
+  <input
+    type="text"
+    id="productSearch"
+    placeholder="🔍 Search sarees by name or category..."
+    oninput="searchProducts()"
+  >
+</div>
+  <div class="products" id="productGrid"></div>
 </section>
 <section class="wrap" id="favorites">
   <div class="section-head">
@@ -800,7 +830,46 @@ function closeProductGallery() {
   document.getElementById("productGalleryOverlay").style.display = "none";
 }
 const money=n=>"₹"+n.toLocaleString("en-IN");
-function renderProducts(){
+function searchProducts() {
+  const searchValue = document.getElementById("productSearch").value
+    .toLowerCase()
+    .trim();
+
+  const filteredProducts = products.filter(p =>
+    p.name.toLowerCase().includes(searchValue) ||
+    p.category.toLowerCase().includes(searchValue) ||
+    p.desc.toLowerCase().includes(searchValue)
+  );
+
+  document.getElementById("productGrid").innerHTML = filteredProducts.map(p => `
+    <article class="product">
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.name}"
+          onclick="window.location.href='product-details.html?id=${p.id}'"
+          style="cursor:pointer">
+      </div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="muted">${p.category} · ${p.desc}</div>
+        <div class="price">
+          ${money(p.price)}
+          <span class="original-price">${money(p.originalPrice)}</span>
+          <span class="discount-badge">${Math.round((1-p.price/p.originalPrice)*100)}% OFF</span>
+        </div>
+        <div class="actions">
+          <button class="add" onclick="addToCart(${p.id})">🛍 Add to Bag</button>
+          <button class="whatsapp-order" onclick="orderSingle(${p.id})">Order on WhatsApp</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  if (filteredProducts.length === 0) {
+    document.getElementById("productGrid").innerHTML =
+      '<p style="text-align:center;grid-column:1/-1;color:#897780;">No sarees found. Try another search.</p>';
+  }
+}
+  function renderProducts(){
  document.getElementById("productGrid").innerHTML=products.map(p=>`
  <article class="product">
    <div class="product-image">
