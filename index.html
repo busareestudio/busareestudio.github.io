@@ -832,6 +832,7 @@ function toggleFavorite(id, button) {
   const grid = document.getElementById("favoriteGrid");
   const emptyMessage = document.getElementById("emptyFavorites");
   document.getElementById("favoriteCount").textContent = favorites.length;
+  document.getElementById("favoriteCountMobile").textContent = favorites.length;
   grid.innerHTML = favorites.map(p => `
     <article class="product">
       <div class="product-image">
