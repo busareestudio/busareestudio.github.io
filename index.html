@@ -187,10 +187,15 @@ display:none;
   background:var(--wine);
   color:white;
 }
-.actions .add:hover{
-  background:var(--gold);
-  color:var(--wine);
-  transform:translateY(-2px);
+.actions .add:hover {
+  background: var(--gold);
+  color: var(--wine);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(84,29,55,0.2);
+}
+
+.actions .add:active {
+  transform: scale(0.96);
 }
 .actions .whatsapp-order{
   background:#238b59;
@@ -743,7 +748,7 @@ function renderProducts(){
   <span class="discount-badge">${Math.round((1-p.price/p.originalPrice)*100)}% OFF</span>` : ""}
 </div>
      <div class="actions">
-       <button class="add" onclick="addToCart(${p.id})">Add to Bag</button>
+       <button class="add" onclick="addToCart(${p.id})">🛍 Add to Bag</button>
        <button class="whatsapp-order" onclick="orderSingle(${p.id})">Order on WhatsApp</button>
      </div>
    </div>
