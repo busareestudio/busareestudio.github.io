@@ -426,12 +426,20 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 .bag-success-content button {
   display: block;
   width: 100%;
-  border: 0;
+  border: 1px solid var(--gold);
   border-radius: 25px;
   padding: 12px;
-  background: var(--wine);
+  background: linear-gradient(135deg, #541d37, #7b294d);
   color: white;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.bag-success-content button:hover {
+  background: linear-gradient(110deg, #c69a4b, #f5df9b, #c69a4b);
+  color: var(--wine);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(84,29,55,0.2);
 }/* Product Gallery Popup */
 .product-gallery-overlay {
   display: none;
