@@ -315,6 +315,13 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.gallery-image img.changing {
+  opacity: 0;
+  transform: scale(0.96);
 }
 
 .gallery-close {
@@ -559,11 +566,17 @@ function updateProductGallery() {
 function changeProductSlide(direction) {
   if (!galleryImages || galleryImages.length <= 1) return;
 
-  gallerySlideIndex =
-    (gallerySlideIndex + direction + galleryImages.length) % galleryImages.length;
+  const galleryImage = document.getElementById("galleryProductImage");
 
-  updateProductGallery();
-  console.log("Gallery slide:", gallerySlideIndex + 1);
+  galleryImage.classList.add("changing");
+
+  setTimeout(() => {
+    gallerySlideIndex =
+      (gallerySlideIndex + direction + galleryImages.length) % galleryImages.length;
+
+    updateProductGallery();
+    galleryImage.classList.remove("changing");
+  }, 450);
 }
 
 function closeProductGallery() {
