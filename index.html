@@ -907,6 +907,8 @@ function showHeroSlide(index) {
 
 setInterval(() => {
   showHeroSlide((heroIndex + 1) % heroImages.length);
-}, 3000);document.getElementById("year").textContent=new Date().getFullYear();renderProducts();renderCart();
+}, 3000);document.getElementById("year").textContent=new Date().getFullYear();renderProducts();
+renderCart();
+renderFavorites();
 </script>
 </body></html>
