@@ -459,8 +459,8 @@ const heroImages = [
 
 let heroIndex = 0;
 
-setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroImages.length;
+function showHeroSlide(index) {
+  heroIndex = index;
 
   const heroImage = document.getElementById("heroSaree");
 
@@ -472,6 +472,13 @@ setInterval(() => {
     heroImage.style.opacity = "1";
   }, 300);
 
+  document.querySelectorAll(".hero-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === heroIndex);
+  });
+}
+
+setInterval(() => {
+  showHeroSlide((heroIndex + 1) % heroImages.length);
 }, 3000);document.getElementById("year").textContent=new Date().getFullYear();renderProducts();renderCart();
 </script>
 </body></html>
