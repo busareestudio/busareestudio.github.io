@@ -616,7 +616,13 @@ function loadProduct(){
   }
 
   document.title = product.name + " | BU Saree Studio";
+let recentlyViewed = JSON.parse(localStorage.getItem("buRecentlyViewed")) || [];
 
+recentlyViewed = recentlyViewed.filter(id => id !== product.id);
+recentlyViewed.unshift(product.id);
+recentlyViewed = recentlyViewed.slice(0, 6);
+
+localStorage.setItem("buRecentlyViewed", JSON.stringify(recentlyViewed));
   document.getElementById("breadcrumbName").textContent = product.name;
   document.getElementById("productName").textContent = product.name;
   document.getElementById("productCategory").textContent =
