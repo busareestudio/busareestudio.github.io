@@ -554,12 +554,13 @@ function updateProductGallery() {
 }
 
 function changeProductSlide(direction) {
-  if (galleryImages.length <= 1) return;
+  if (!galleryImages || galleryImages.length <= 1) return;
 
   gallerySlideIndex =
     (gallerySlideIndex + direction + galleryImages.length) % galleryImages.length;
 
   updateProductGallery();
+  console.log("Gallery slide:", gallerySlideIndex + 1);
 }
 
 function closeProductGallery() {
