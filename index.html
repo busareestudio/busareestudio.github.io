@@ -20,7 +20,15 @@ header{position:sticky;top:0;z-index:5;background:#fffaf5ee;backdrop-filter:blur
   object-fit: contain;
 }
 nav{display:flex;gap:22px;font-size:13px}nav a:hover{color:var(--rose)}.cart-btn,.primary{border:0;background:var(--wine);color:white;border-radius:30px;padding:11px 18px}.cart-btn span{background:var(--gold);color:#281720;border-radius:50%;padding:2px 7px;margin-left:5px}
-.hero{background:linear-gradient(90deg,#3c172b 0%,#6a2c49 55%,#9a526b 100%);color:white;min-height:440px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:50px max(calc((100vw - 1160px)/2),24px);gap:30px;overflow:hidden}
+.offer-banner {
+  background: linear-gradient(90deg, #6b1028, #8b1e3f, #6b1028);
+  color: #f5d98b;
+  text-align: center;
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}.hero{background:linear-gradient(90deg,#3c172b 0%,#6a2c49 55%,#9a526b 100%);color:white;min-height:440px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:50px max(calc((100vw - 1160px)/2),24px);gap:30px;overflow:hidden}
 .eyebrow{color:#e8c98c;letter-spacing:3px;font-size:11px;font-weight:600}.hero h1{font:600 clamp(38px,5vw,62px)/1.08 'Playfair Display',serif;margin:15px 0}.hero p{color:#f6e7ed;line-height:1.8;max-width:500px;font-size:14px}.hero .primary{background:var(--gold);color:#321827;margin-top:14px;font-weight:600}
 .hero-art{
   height:380px;
@@ -388,6 +396,9 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 <button class="cart-btn" onclick="openCart()">Bag <span id="cartCount">0</span></button>
 </div></header>
 <main>
+  <div class="offer-banner">
+  ✨ FESTIVE SALE — SAVE UP TO 17% ON SELECTED SAREES ✨
+</div>
 <section class="hero" id="home">
 <div><div class="eyebrow">A CELEBRATION OF EVERY THREAD</div><h1>Elegance Woven<br>in Every Thread.</h1><p>Discover sarees that bring together timeless Indian craftsmanship and the beauty of modern style. Find the drape for your every special moment.</p><a class="primary" href="#collections">Explore Collection</a></div>
 <div class="hero-art">
