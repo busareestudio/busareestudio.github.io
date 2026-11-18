@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore beautiful sarees at BU Saree Studio.">
+<title>Product Details | BU Saree Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wine:#541d37;
+  --rose:#b94e72;
+  --pink:#f8e8ed;
+  --gold:#c69a4b;
+  --cream:#fffaf5;
+  --ink:#30232a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Poppins,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#fffaf5ee;
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #ead9dc;
+}
+.nav{
+  max-width:1160px;
+  margin:auto;
+  padding:12px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.logo img{height:75px;width:auto;display:block;object-fit:contain}
+nav{display:flex;gap:22px;font-size:13px}
+nav a:hover{color:var(--rose)}
+.cart-btn{
+  border:0;
+  background:var(--wine);
+  color:white;
+  border-radius:30px;
+  padding:10px 16px;
+}
+.cart-btn span{
+  background:var(--gold);
+  color:#281720;
+  border-radius:50%;
+  padding:2px 7px;
+  margin-left:4px;
+}
+
+.breadcrumb{
+  max-width:1160px;
+  margin:auto;
+  padding:22px;
+  color:#897780;
+  font-size:12px;
+}
+.breadcrumb a{color:var(--wine)}
+
+.product-layout{
+  max-width:1160px;
+  margin:auto;
+  padding:10px 22px 55px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+}
+
+.gallery{
+  position:sticky;
+  top:115px;
+  align-self:start;
+}
+.main-image{
+  height:570px;
+  background:linear-gradient(145deg,#fffaf0,#f0e2cf);
+  border:1px solid #ead9c0;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow:hidden;
+}
+.main-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:transform .4s ease;
+}
+.main-image:hover img{transform:scale(1.06)}
+.gallery-note{
+  text-align:center;
+  font-size:11px;
+  color:#897780;
+  margin-top:12px;
+}
+
+.product-info{padding:12px 0}
+.product-label{
+  display:inline-block;
+  color:var(--rose);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.product-info h1{
+  font:600 clamp(30px,4vw,42px) 'Playfair Display',serif;
+  color:var(--wine);
+  margin:12px 0;
+}
+.category{font-size:13px;color:#897780}
+.price{
+  font-size:28px;
+  font-weight:700;
+  color:var(--wine);
+  margin:22px 0 8px;
+}
+.original-price{
+  font-size:16px;
+  font-weight:400;
+  color:#888;
+  text-decoration:line-through;
+  margin-left:10px;
+}
+.discount{
+  display:inline-block;
+  background:#8b1e3f;
+  color:white;
+  border-radius:20px;
+  padding:6px 11px;
+  font-size:11px;
+  margin-left:8px;
+}
+.stock{
+  display:inline-block;
+  background:#e5f5e9;
+  color:#237344;
+  border-radius:20px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:600;
+  margin:15px 0;
+}
+.description{
+  font-size:13px;
+  line-height:1.9;
+  color:#786871;
+  border-bottom:1px solid #ead9dc;
+  padding-bottom:20px;
+}
+.quantity-area{
+  margin:22px 0;
+}
+.quantity-area label{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:10px;
+  color:var(--wine);
+}
+.quantity-control{
+  display:flex;
+  align-items:center;
+  width:135px;
+  border:1px solid #dfc8cf;
+  border-radius:30px;
+  overflow:hidden;
+  background:white;
+}
+.quantity-control button{
+  width:42px;
+  height:40px;
+  border:0;
+  background:#f8e8ed;
+  color:var(--wine);
+  font-size:20px;
+}
+.quantity-control span{
+  flex:1;
+  text-align:center;
+  font-weight:600;
+}
+
+.purchase-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:22px 0;
+}
+.purchase-buttons button{
+  padding:14px 10px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:600;
+  transition:.3s;
+}
+.add-button{
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,#541d37,#7b294d);
+  color:white;
+}
+.add-button:hover{
+  background:linear-gradient(110deg,#c69a4b,#f5df9b);
+  color:var(--wine);
+  transform:translateY(-2px);
+}
+.buy-button{
+  border:1px solid #238b59;
+  background:#238b59;
+  color:white;
+}
+.buy-button:hover{background:#176b43}
+.favorite-button{
+  width:100%;
+  padding:12px;
+  border:1px solid #d9b7c3;
+  border-radius:30px;
+  color:var(--wine);
+  background:white;
+  font-weight:600;
+}
+.favorite-button.active{
+  background:#8b1e3f;
+  color:white;
+}
+
+.benefits{
+  background:#fff;
+  border:1px solid #ead9dc;
+  border-radius:15px;
+  padding:18px;
+  margin-top:22px;
+}
+.benefits p{
+  font-size:12px;
+  line-height:1.9;
+  margin:5px 0;
+  color:#786871;
+}
+
+.details-section{
+  max-width:1160px;
+  margin:auto;
+  padding:20px 22px 50px;
+}
+.details-card{
+  background:white;
+  border:1px solid #ead9dc;
+  border-radius:18px;
+  padding:28px;
+}
+.details-card h2,
+.related h2{
+  font:600 28px 'Playfair Display',serif;
+  color:var(--wine);
+  margin-top:0;
+}
+.spec-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.spec-table td{
+  padding:13px 10px;
+  border-bottom:1px solid #f0e4e7;
+}
+.spec-table td:first-child{
+  color:#897780;
+  width:40%;
+}
+.related{
+  max-width:1160px;
+  margin:auto;
+  padding:20px 22px 65px;
+}
+.related-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.related-card{
+  background:white;
+  border:1px solid #ead9dc;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s;
+}
+.related-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px #541d3718;
+}
+.related-card img{
+  width:100%;
+  height:260px;
+  object-fit:contain;
+  background:#f5eadb;
+  padding:10px;
+}
+.related-card div{padding:15px}
+.related-card h3{
+  color:var(--wine);
+  font:600 18px 'Playfair Display',serif;
+  margin:0 0 8px;
+}
+.related-card p{font-size:13px;font-weight:600;color:var(--wine)}
+
+footer{
+  background:#351426;
+  color:#f8eaf0;
+  padding:40px 22px 25px;
+}
+.footer-content{
+  max-width:1160px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr 1fr;
+  gap:35px;
+}
+footer h3{
+  color:#f5d99b;
+  font:600 19px 'Playfair Display',serif;
+}
+footer p,footer a{
+  font-size:12px;
+  line-height:2;
+  color:#e2cbd4;
+}
+footer a:hover{color:#f5d99b}
+.footer-logo{
+  background:#fffaf0;
+  display:inline-block;
+  padding:10px;
+  border-radius:12px;
+}
+.footer-logo img{height:65px;display:block}
+.copyright{
+  text-align:center;
+  border-top:1px solid #684052;
+  margin-top:30px;
+  padding-top:20px;
+}
+
+.toast{
+  display:none;
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:30;
+  background:#238b59;
+  color:white;
+  padding:14px 22px;
+  border-radius:30px;
+  font-size:13px;
+  box-shadow:0 5px 20px #0003;
+  width:max-content;
+  max-width:90%;
+}
+
+@media(max-width:760px){
+  .nav{padding:9px 13px}
+  .logo img{height:60px}
+  nav{display:none}
+  .cart-btn{padding:9px 12px;font-size:12px}
+  .breadcrumb{padding:16px}
+  .product-layout{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:5px 16px 35px;
+  }
+  .gallery{position:relative;top:auto}
+  .main-image{height:390px}
+  .product-info{padding:5px 2px}
+  .product-info h1{font-size:32px}
+  .purchase-buttons{grid-template-columns:1fr}
+  .details-section,.related{padding:15px 16px 35px}
+  .details-card{padding:20px 15px}
+  .related-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .related-card img{height:190px}
+  .related-card h3{font-size:15px}
+  .footer-content{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media(max-width:400px){
+  .related-grid{grid-template-columns:1fr}
+  .footer-content{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">
+      <img src="bu-logo.png?v=2" alt="BU Saree Studio">
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#collections">Collections</a>
+      <a href="index.html#favorites">♡ Favourites</a>
+      <a href="index.html#about">Our Story</a>
+      <a href="#footer">Contact</a>
+    </nav>
+    <a href="index.html#collections" class="cart-btn">Continue Shopping</a>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / 
+  <a href="index.html#collections">Collections</a> /
+  <span id="breadcrumbName">Product</span>
+</div>
+
+<main>
+  <section class="product-layout">
+    <div class="gallery">
+      <div class="main-image">
+        <img id="productImage" src="" alt="Saree">
+      </div>
+      <p class="gallery-note">✨ A closer look at your selected saree</p>
+    </div>
+
+    <div class="product-info">
+      <span class="product-label" id="productLabel">BU STUDIO COLLECTION</span>
+      <h1 id="productName">Loading product...</h1>
+      <div class="category" id="productCategory"></div>
+
+      <div class="price" id="productPrice"></div>
+
+      <div class="stock">✓ Availability confirmed on WhatsApp</div>
+
+      <p class="description" id="productDescription"></p>
+
+      <div class="quantity-area">
+        <label>Select Quantity</label>
+        <div class="quantity-control">
+          <button onclick="changeQuantity(-1)">−</button>
+          <span id="quantity">1</span>
+          <button onclick="changeQuantity(1)">+</button>
+        </div>
+      </div>
+
+      <div class="purchase-buttons">
+        <button class="add-button" onclick="addProductToBag()">🛍 Add to Bag</button>
+        <button class="buy-button" onclick="buyNow()">Buy Now</button>
+      </div>
+
+      <button class="favorite-button" id="favoriteButton" onclick="toggleProductFavorite()">♡ Add to Favourites</button>
+
+      <div class="benefits">
+        <p>✦ Personal assistance through WhatsApp</p>
+        <p>✦ Delivery details confirmed before ordering</p>
+        <p>✦ Product availability confirmed before purchase</p>
+        <p>✦ A Touch of Tradition — BU Saree Studio</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="details-section">
+    <div class="details-card">
+      <h2>Product Description</h2>
+      <p id="longDescription" style="font-size:13px;line-height:1.9;color:#786871"></p>
+
+      <h2 style="margin-top:30px">Product Information</h2>
+      <table class="spec-table">
+        <tr><td>Product Name</td><td id="specName"></td></tr>
+        <tr><td>Category</td><td id="specCategory"></td></tr>
+        <tr><td>Colour</td><td id="specColour"></td></tr>
+        <tr><td>Availability</td><td>Confirm on WhatsApp</td></tr>
+        <tr><td>Ordering</td><td>WhatsApp ordering available</td></tr>
+      </table>
+
+      <h2 style="margin-top:30px">Shipping & Delivery</h2>
+      <p style="font-size:13px;line-height:1.9;color:#786871">
+        Please contact BU Saree Studio to confirm delivery availability,
+        shipping charges and estimated delivery timelines for your location.
+      </p>
+
+      <h2 style="margin-top:30px">Returns & Exchanges</h2>
+      <p style="font-size:13px;line-height:1.9;color:#786871">
+        Please contact us before placing your order to confirm the applicable
+        return and exchange terms.
+      </p>
+    </div>
+  </section>
+
+  <section class="related">
+    <h2>You May Also Like</h2>
+    <div class="related-grid" id="relatedProducts"></div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="footer-content">
+    <div>
+      <div class="footer-logo">
+        <img src="bu-logo.png?v=2" alt="BU Saree Studio">
+      </div>
+      <p>A Touch of Tradition</p>
+      <p>Celebrating timeless saree elegance with a personal touch.</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="index.html">Home</a></p>
+      <p><a href="index.html#collections">Shop Collections</a></p>
+      <p><a href="index.html#favorites">My Favourites</a></p>
+      <p><a href="index.html#about">Our Story</a></p>
+    </div>
+
+    <div>
+      <h3>Customer Support</h3>
+      <p><a href="tel:+918142897113">+91 81428 97113</a></p>
+      <p><a href="mailto:busareestudio@gmail.com">Email Us</a></p>
+      <p><a href="https://wa.me/918142897113" target="_blank">WhatsApp Support</a></p>
+    </div>
+
+    <div>
+      <h3>Shopping</h3>
+      <p><a href="index.html#delivery">Delivery Information</a></p>
+      <p><a href="index.html#contact">Contact Us</a></p>
+      <p><a href="index.html#collections">Explore Sarees</a></p>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>© <span id="year"></span> BU Saree Studio. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✓ Added to Bag Successfully!</div>
+
+<script>
+const WHATSAPP_NUMBER = "918142897113";
+
+const products = [
+  {
+    id:1,
+    name:"Golden Elegance Saree",
+    category:"Silk Sarees",
+    price:2499,
+    originalPrice:2999,
+    desc:"Elegant traditional drape",
+    label:"Elegant Pick",
+    image:"saree1.png",
+    colour:"Gold",
+    description:"Discover the beauty of the Golden Elegance Saree. A graceful traditional style for your special moments and celebrations."
+  },
+  {
+    id:2,
+    name:"Emerald Grace Saree",
+    category:"Designer Sarees",
+    price:3999,
+    originalPrice:4799,
+    desc:"Rich green statement style",
+    label:"Traditional Favourite",
+    image:"saree2.png",
+    colour:"Green",
+    description:"Make a graceful statement with the Emerald Grace Saree. Its rich green appearance brings elegance to your occasion wardrobe."
+  },
+  {
+    id:3,
+    name:"Ruby Red Saree",
+    category:"Party Wear",
+    price:2899,
+    originalPrice:3499,
+    desc:"Occasion-ready elegance",
+    label:"Designer Edit",
+    image:"saree3.png",
+    colour:"Red",
+    description:"Celebrate special occasions with the Ruby Red Saree, bringing a beautiful traditional touch to your collection."
+  }
+];
+
+const params = new URLSearchParams(window.location.search);
+const productId = Number(params.get("id"));
+const product = products.find(p => p.id === productId);
+
+let quantity = 1;
+
+function money(amount){
+  return "₹" + amount.toLocaleString("en-IN");
+}
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.display = "block";
+  setTimeout(() => toast.style.display = "none", 2500);
+}
+
+function loadProduct(){
+  if(!product){
+    document.querySelector("main").innerHTML =
+      '<div style="text-align:center;padding:100px 20px"><h2>Product Not Found</h2><a href="index.html">Return to Shop</a></div>';
+    return;
+  }
+
+  document.title = product.name + " | BU Saree Studio";
+
+  document.getElementById("breadcrumbName").textContent = product.name;
+  document.getElementById("productName").textContent = product.name;
+  document.getElementById("productCategory").textContent =
+    product.category + " · " + product.desc;
+  document.getElementById("productLabel").textContent = product.label;
+  document.getElementById("productImage").src = product.image;
+  document.getElementById("productImage").alt = product.name;
+
+  document.getElementById("productPrice").innerHTML =
+    money(product.price) +
+    ' <span class="original-price">' + money(product.originalPrice) + '</span>' +
+    ' <span class="discount">' +
+    Math.round((1-product.price/product.originalPrice)*100) +
+    '% OFF</span>';
+
+  document.getElementById("productDescription").textContent = product.description;
+  document.getElementById("longDescription").textContent = product.description;
+  document.getElementById("specName").textContent = product.name;
+  document.getElementById("specCategory").textContent = product.category;
+  document.getElementById("specColour").textContent = product.colour;
+
+  updateFavoriteButton();
+  renderRelatedProducts();
+}
+
+function changeQuantity(amount){
+  quantity = Math.max(1, quantity + amount);
+  document.getElementById("quantity").textContent = quantity;
+}
+
+function addProductToBag(){
+  let cart = JSON.parse(localStorage.getItem("buCart")) || [];
+  const existing = cart.find(item => item.id === product.id);
+
+  if(existing){
+    existing.qty += quantity;
+  }else{
+    cart.push({...product, qty:quantity});
+  }
+
+  localStorage.setItem("buCart", JSON.stringify(cart));
+  showToast("✓ Added to Bag Successfully!");
+}
+
+function buyNow(){
+  const message =
+    "Hello BU Saree Studio! I would like to order:\n" +
+    product.name + "\nQuantity: " + quantity +
+    "\nPrice: " + money(product.price * quantity) +
+    "\nPlease confirm availability and delivery details.";
+
+  window.open(
+    "https://wa.me/" + WHATSAPP_NUMBER + "?text=" +
+    encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+function toggleProductFavorite(){
+  let favorites = JSON.parse(localStorage.getItem("buFavorites")) || [];
+  const exists = favorites.some(item => item.id === product.id);
+
+  if(exists){
+    favorites = favorites.filter(item => item.id !== product.id);
+    showToast("Removed from Favourites");
+  }else{
+    favorites.push(product);
+    showToast("Added to Favourites");
+  }
+
+  localStorage.setItem("buFavorites", JSON.stringify(favorites));
+  updateFavoriteButton();
+}
+
+function updateFavoriteButton(){
+  const favorites = JSON.parse(localStorage.getItem("buFavorites")) || [];
+  const isFavorite = favorites.some(item => item.id === product.id);
+  const button = document.getElementById("favoriteButton");
+
+  button.classList.toggle("active", isFavorite);
+  button.textContent = isFavorite ? "♥ Added to Favourites" : "♡ Add to Favourites";
+}
+
+function renderRelatedProducts(){
+  const related = products.filter(p => p.id !== product.id);
+
+  document.getElementById("relatedProducts").innerHTML =
+    related.map(p => `
+      <article class="related-card" onclick="openRelatedProduct(${p.id})">
+        <img src="${p.image}" alt="${p.name}">
+        <div>
+          <h3>${p.name}</h3>
+          <p>${money(p.price)}</p>
+          <span style="font-size:11px;color:#897780">View Product →</span>
+        </div>
+      </article>
+    `).join("");
+}
+
+function openRelatedProduct(id){
+  window.location.href = "product-details.html?id=" + id;
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+loadProduct();
+</script>
+</body>
+</html>
