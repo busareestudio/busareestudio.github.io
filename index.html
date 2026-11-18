@@ -89,8 +89,33 @@ display:none;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 8px 28px rgba(84,29,55,0.08);
+}.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #8b1e3f;
+  font-size: 25px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px #0002;
+  transition: 0.3s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.15);
+}
+
+.favorite-btn.active {
+  background: #8b1e3f;
+  color: white;
 }.product-image {
   height: 360px;
+  position: relative;
   overflow: hidden;
   background: linear-gradient(145deg, #fffaf0, #f3e7d4);
   display: flex;
@@ -703,6 +728,9 @@ function renderProducts(){
  document.getElementById("productGrid").innerHTML=products.map(p=>`
  <article class="product">
    <div class="product-image">
+  <button class="favorite-btn"
+    onclick="toggleFavorite(${p.id}, this)"
+    aria-label="Add to favourites">♡</button>
      <img src="${p.image}" alt="${p.name}" onclick="openProductGallery(${p.id})">
    </div>
    <div class="product-info">
@@ -722,7 +750,17 @@ function renderProducts(){
  </article>
  `).join("");
 }
-function addToCart(id) {
+function toggleFavorite(id, button) {
+  button.classList.toggle("active");
+
+  if (button.classList.contains("active")) {
+    button.textContent = "♥";
+    button.setAttribute("aria-label", "Remove from favourites");
+  } else {
+    button.textContent = "♡";
+    button.setAttribute("aria-label", "Add to favourites");
+  }
+}function addToCart(id) {
   const p = products.find(x => x.id === id);
   const found = cart.find(x => x.id === id);
 
