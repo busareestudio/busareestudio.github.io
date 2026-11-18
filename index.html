@@ -523,6 +523,7 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 <nav>
   <a href="#home">Home</a>
   <a href="#collections">Collections</a>
+  <a href="#favorites">♡ Favourites <span id="favoriteCount">0</span></a>
   <a href="#delivery">Shopping & Delivery</a>
   <a href="#about">Our Story</a>
   <a href="#contact">Contact</a>
@@ -827,7 +828,7 @@ function toggleFavorite(id, button) {
 }function renderFavorites() {
   const grid = document.getElementById("favoriteGrid");
   const emptyMessage = document.getElementById("emptyFavorites");
-
+  document.getElementById("favoriteCount").textContent = favorites.length;
   grid.innerHTML = favorites.map(p => `
     <article class="product">
       <div class="product-image">
