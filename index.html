@@ -102,7 +102,28 @@ display:block;
   background:#176b43;
   transform:translateY(-2px);
 }
-.story{background:var(--pink);border-radius:18px;padding:35px;text-align:center}.story p{max-width:720px;margin:12px auto;color:#705b64;line-height:1.8;font-size:13px}
+.story{background:var(--pink);border-radius:18px;padding:35px;text-align:center}/* Floating WhatsApp button */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:22px;
+  z-index:99;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  box-shadow:0 5px 18px #0003;
+  transition:transform .25s ease;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
+}.story p{max-width:720px;margin:12px auto;color:#705b64;line-height:1.8;font-size:13px}
 footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}footer .logo{color:#f5d99b}footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:center;gap:20px;font-size:12px;margin:18px}
 .overlay{display:none;position:fixed;inset:0;background:#1d1018aa;z-index:10;justify-content:flex-end}.drawer{background:#fffaf5;width:min(440px,100%);height:100%;padding:24px;overflow:auto}.drawer-top{display:flex;justify-content:space-between;align-items:center}.drawer h2{font-size:27px}.close{border:0;background:none;font-size:26px}.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ead9dc;padding:14px 0;font-size:13px}.cart-line button{border:0;background:none;color:#a13c5d}.total{display:flex;justify-content:space-between;font-weight:600;margin:20px 0}.checkout{width:100%;margin:7px 0;padding:13px;border:0;border-radius:25px;background:var(--wine);color:white}.checkout.alt{background:#238b59}.note{font-size:11px;color:#82717a;line-height:1.6}
 @media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{height:220px}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr}.wrap{padding:40px 18px}.story{padding:25px 18px}}
@@ -211,7 +232,13 @@ footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}foot
   </div>
 
   <p>© <span id="year"></span> BU Saree Studio. All rights reserved.</p>
-</footer>
+</footer><a class="whatsapp-float"
+   href="https://wa.me/918142897113?text=Hello%20BU%20Saree%20Studio!%20I%20would%20like%20to%20enquire%20about%20your%20sarees."
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat with BU Saree Studio on WhatsApp">
+  ☎
+</a>
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-top"><h2>Your Shopping Bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="checkout alt" onclick="whatsappCheckout()">Order on WhatsApp</button><button class="checkout" onclick="onlinePayment()">Pay Online</button><p class="note">Online payment must be connected to your own verified payment-gateway account before accepting payments. This starter website does not collect or process card/UPI details itself.</p></aside></div>
 <script>
 /* SETUP: Replace this with your WhatsApp number including country code, digits only. Example India: 919876543210 */
