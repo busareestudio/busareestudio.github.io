@@ -260,7 +260,7 @@ footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}foot
 <section class="hero" id="home">
 <div><div class="eyebrow">A CELEBRATION OF EVERY THREAD</div><h1>Elegance Woven<br>in Every Thread.</h1><p>Discover sarees that bring together timeless Indian craftsmanship and the beauty of modern style. Find the drape for your every special moment.</p><a class="primary" href="#collections">Explore Collection</a></div>
 <div class="hero-art">
-<img src="saree1.png" alt="Golden Elegance Saree by BU Saree Studio">
+<img id="heroSaree" src="saree1.png" alt="BU Saree Studio Saree Collection">
 </div>
 </section>
 <section class="wrap" id="collections">
@@ -423,6 +423,28 @@ function contactWhatsApp(){sendWhatsApp("Hello BU Saree Studio! I would like to 
 function orderSingle(id){const p=products.find(x=>x.id===id);sendWhatsApp("Hello BU Saree Studio! I am interested in: "+p.name+" ("+money(p.price)+"). Please share availability and delivery details.")}
 function whatsappCheckout(){if(!cart.length){alert("Your bag is empty.");return}const lines=cart.map(p=>p.name+" × "+p.qty+" — "+money(p.price*p.qty)).join("\n");sendWhatsApp("Hello BU Saree Studio! I would like to place an order:\n"+lines+"\nTotal: "+money(cart.reduce((s,x)=>s+x.price*x.qty,0))+"\nPlease confirm availability, delivery charges and payment details.");}
 function onlinePayment(){alert("Online payment is not active yet. To enable it, connect a verified Razorpay account and a secure server-side order creation and payment verification flow. For now, please use Order on WhatsApp.");}
-document.getElementById("year").textContent=new Date().getFullYear();renderProducts();renderCart();
+// BU Saree Studio Hero Slideshow
+const heroImages = [
+  { image: "saree1.png", name: "Golden Elegance Saree" },
+  { image: "saree2.png", name: "Emerald Grace Saree" },
+  { image: "saree3.png", name: "Ruby Red Saree" }
+];
+
+let heroIndex = 0;
+
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroImages.length;
+
+  const heroImage = document.getElementById("heroSaree");
+
+  heroImage.style.opacity = "0";
+
+  setTimeout(() => {
+    heroImage.src = heroImages[heroIndex].image;
+    heroImage.alt = heroImages[heroIndex].name;
+    heroImage.style.opacity = "1";
+  }, 300);
+
+}, 3000);document.getElementById("year").textContent=new Date().getFullYear();renderProducts();renderCart();
 </script>
 </body></html>
