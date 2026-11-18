@@ -553,7 +553,19 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 <div class="section-head"><div class="eyebrow">THE STUDIO EDIT</div><h2>Featured Sarees</h2><p>Sample listings — replace names, photos and prices with your actual products.</p></div>
 <div class="products" id="productGrid"></div>
 </section>
-<section class="wrap" id="delivery">
+<section class="wrap" id="favorites">
+  <div class="section-head">
+    <div class="eyebrow">YOUR PERSONAL COLLECTION</div>
+    <h2>♡ My Favourites</h2>
+    <p>Your favourite sarees, all in one place.</p>
+  </div>
+
+  <div class="products" id="favoriteGrid"></div>
+
+  <p id="emptyFavorites" style="text-align:center;color:#897780;font-size:13px;">
+    You haven't added any favourites yet. Tap the ♡ on a saree to save it here.
+  </p>
+</section><section class="wrap" id="delivery">
   <div class="section-head">
     <div class="eyebrow">SHOP WITH CONFIDENCE</div>
     <h2>Your Shopping Experience</h2>
@@ -703,7 +715,8 @@ originalPrice:2999,
   images:["saree3.png","saree3.png","saree3.png"]
  }
 ];
-let cart=[];
+let cart = [];
+let favorites = [];
   let currentGalleryProduct = null;
 let galleryImages = [];
 let gallerySlideIndex = 0;
@@ -793,15 +806,49 @@ function renderProducts(){
  `).join("");
 }
 function toggleFavorite(id, button) {
-  button.classList.toggle("active");
+  const product = products.find(p => p.id === id);
 
-  if (button.classList.contains("active")) {
-    button.textContent = "♥";
-    button.setAttribute("aria-label", "Remove from favourites");
+  if (favorites.some(p => p.id === id)) {
+    favorites = favorites.filter(p => p.id !== id);
   } else {
-    button.textContent = "♡";
-    button.setAttribute("aria-label", "Add to favourites");
+    favorites.push(product);
   }
+
+  document.querySelectorAll(".favorite-btn").forEach(btn => {
+    if (btn.getAttribute("onclick").includes(`(${id},`)) {
+      const active = favorites.some(p => p.id === id);
+      btn.classList.toggle("active", active);
+      btn.textContent = active ? "♥" : "♡";
+      btn.setAttribute("aria-label", active ? "Remove from favourites" : "Add to favourites");
+    }
+  });
+
+  renderFavorites();
+}function renderFavorites() {
+  const grid = document.getElementById("favoriteGrid");
+  const emptyMessage = document.getElementById("emptyFavorites");
+
+  grid.innerHTML = favorites.map(p => `
+    <article class="product">
+      <div class="product-image">
+        <button class="favorite-btn active"
+          onclick="toggleFavorite(${p.id}, this)"
+          aria-label="Remove from favourites">♥</button>
+        <img src="${p.image}" alt="${p.name}" onclick="openProductGallery(${p.id})">
+      </div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="muted">${p.category} · ${p.desc}</div>
+        <div class="price">${money(p.price)}</div>
+        <div class="actions">
+          <button class="add" onclick="addToCart(${p.id})">🛍 Add to Bag</button>
+          <button class="whatsapp-order" onclick="orderSingle(${p.id})">Order on WhatsApp</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  emptyMessage.style.display = favorites.length ? "none" : "block";
 }function addToCart(id) {
   const p = products.find(x => x.id === id);
   const found = cart.find(x => x.id === id);
