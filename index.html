@@ -533,16 +533,23 @@ let cart=[];
   let currentGalleryProduct = null;
 let galleryImages = [];
 let gallerySlideIndex = 0;
+  let galleryTimer = null;
 
 function openProductGallery(id) {
   currentGalleryProduct = products.find(p => p.id === id);
   if (!currentGalleryProduct) return;
+
+  clearInterval(galleryTimer);
 
   galleryImages = currentGalleryProduct.images || [currentGalleryProduct.image];
   gallerySlideIndex = 0;
 
   updateProductGallery();
   document.getElementById("productGalleryOverlay").style.display = "flex";
+
+  galleryTimer = setInterval(() => {
+    changeProductSlide(1);
+  }, 3000);
 }
 
 function updateProductGallery() {
@@ -580,6 +587,8 @@ function changeProductSlide(direction) {
 }
 
 function closeProductGallery() {
+  clearInterval(galleryTimer);
+  galleryTimer = null;
   document.getElementById("productGalleryOverlay").style.display = "none";
 }
 const money=n=>"₹"+n.toLocaleString("en-IN");
