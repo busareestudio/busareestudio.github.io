@@ -280,6 +280,72 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
     flex-wrap:wrap;
   }
 }
+/* Product Gallery Popup */
+.product-gallery-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(29,16,24,0.85);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-gallery {
+  background: #fffaf5;
+  width: min(550px, 100%);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.gallery-image {
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg,#fffaf0,#f3e7d4);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.gallery-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.gallery-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: 0;
+  background: none;
+  font-size: 28px;
+  color: var(--wine);
+}
+
+.gallery-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.gallery-navigation button {
+  background: var(--wine);
+  color: white;
+  border: 0;
+  border-radius: 25px;
+  padding: 9px 20px;
+}
+
+@media(max-width:760px) {
+  .gallery-image {
+    height: 300px;
+  }
+}
 </style>
 </head>
 <body>
@@ -442,7 +508,7 @@ function renderProducts(){
  document.getElementById("productGrid").innerHTML=products.map(p=>`
  <article class="product">
    <div class="product-image">
-     <img src="${p.image}" alt="${p.name}">
+     <img src="${p.image}" alt="${p.name}" onclick="openProductGallery(${p.id})">
    </div>
    <div class="product-info">
   <span class="product-label">${p.label}</span>
