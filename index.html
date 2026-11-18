@@ -720,7 +720,7 @@ originalPrice:2999,
  }
 ];
 let cart = [];
-let favorites = [];
+let favorites = JSON.parse(localStorage.getItem("buFavorites")) || [];
   let currentGalleryProduct = null;
 let galleryImages = [];
 let gallerySlideIndex = 0;
@@ -817,7 +817,7 @@ function toggleFavorite(id, button) {
   } else {
     favorites.push(product);
   }
-
+localStorage.setItem("buFavorites", JSON.stringify(favorites));
   document.querySelectorAll(".favorite-btn").forEach(btn => {
     if (btn.getAttribute("onclick").includes(`(${id},`)) {
       const active = favorites.some(p => p.id === id);
