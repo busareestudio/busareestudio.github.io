@@ -575,6 +575,7 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
   <div class="section-head">
     <div class="eyebrow">YOUR RECENT DISCOVERIES</div>
     <h2>Recently Viewed Sarees</h2>
+    <button class="remove" onclick="clearRecentlyViewed()">Clear All ✕</button>
     <p>Pick up where you left off and explore your recently viewed sarees.</p>
   </div>
 
@@ -915,6 +916,9 @@ localStorage.setItem("buFavorites", JSON.stringify(favorites));
 
   localStorage.setItem("buRecentlyViewed", JSON.stringify(viewedIds));
 
+  renderRecentlyViewed();
+}function clearRecentlyViewed() {
+  localStorage.removeItem("buRecentlyViewed");
   renderRecentlyViewed();
 }
   function addToCart(id) {
