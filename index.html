@@ -719,7 +719,7 @@ originalPrice:2999,
   images:["saree3.png","saree3.png","saree3.png"]
  }
 ];
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("buCart")) || [];
 let favorites = JSON.parse(localStorage.getItem("buFavorites")) || [];
   let currentGalleryProduct = null;
 let galleryImages = [];
@@ -790,11 +790,11 @@ function renderProducts(){
   <button class="favorite-btn"
     onclick="toggleFavorite(${p.id}, this)"
     aria-label="Add to favourites">♡</button>
-     <img src="${p.image}" alt="${p.name}" onclick="openProductGallery(${p.id})">
+     <img src="${p.image}" alt="${p.name}" onclick="window.location.href='product-details.html?id=${p.id}'" style="cursor:pointer">
    </div>
    <div class="product-info">
   <span class="product-label">${p.label}</span>
-  <h3>${p.name}</h3>
+  <h3 onclick="window.location.href='product-details.html?id=${p.id}'" style="cursor:pointer">${p.name}</h3>
      <div class="muted">${p.category} · ${p.desc}</div>
      <div class="price">
   ${money(p.price)}
@@ -839,7 +839,7 @@ localStorage.setItem("buFavorites", JSON.stringify(favorites));
         <button class="favorite-btn active"
           onclick="toggleFavorite(${p.id}, this)"
           aria-label="Remove from favourites">♥</button>
-        <img src="${p.image}" alt="${p.name}" onclick="openProductGallery(${p.id})">
+        <img src="${p.image}" alt="${p.name}" onclick="window.location.href='product-details.html?id=${p.id}'" style="cursor:pointer">
       </div>
       <div class="product-info">
         <h3>${p.name}</h3>
@@ -861,6 +861,8 @@ localStorage.setItem("buFavorites", JSON.stringify(favorites));
   if (found) found.qty++;
   else cart.push({...p, qty:1});
 
+  localStorage.setItem("buCart", JSON.stringify(cart));
+
   renderCart();
 
   document.getElementById("bagSuccessPopup").style.display = "flex";
@@ -870,7 +872,13 @@ function closeBagPopup() {
   document.getElementById("bagSuccessPopup").style.display = "none";
 }
 function renderCart(){const el=document.getElementById("cartItems");el.innerHTML=cart.length?cart.map(p=>`<div class="cart-line"><div><b>${p.name}</b><br>${money(p.price)} × ${p.qty}</div><div><b>${money(p.price*p.qty)}</b><br><button onclick="removeItem(${p.id})">Remove</button></div></div>`).join(""):"<p>Your bag is empty. Explore our collection to add a saree.</p>";document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);renderCart()}
+function removeItem(id) {
+  cart = cart.filter(x => x.id !== id);
+
+  localStorage.setItem("buCart", JSON.stringify(cart));
+
+  renderCart();
+}
 function openCart(){document.getElementById("cartOverlay").style.display="flex";renderCart()}function closeCart(){document.getElementById("cartOverlay").style.display="none"}
 function validWhatsApp(){if(!/^91\d{10}$/.test(WHATSAPP_NUMBER)){alert("Please add your WhatsApp number in the website setup before using WhatsApp orders.");return false}return true}
 function sendWhatsApp(message){if(!validWhatsApp())return;window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank")}
