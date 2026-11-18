@@ -468,6 +468,22 @@ footer p{font-size:12px;color:#e2cbd4}.foot-links{display:flex;justify-content:c
 </a>
 </a>
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-top"><h2>Your Shopping Bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="checkout alt" onclick="whatsappCheckout()">Order on WhatsApp</button><button class="checkout" onclick="onlinePayment()">Pay Online</button><p class="note">Online payment must be connected to your own verified payment-gateway account before accepting payments. This starter website does not collect or process card/UPI details itself.</p></aside></div>
+<div class="product-gallery-overlay" id="productGalleryOverlay" onclick="if(event.target===this)closeProductGallery()">
+  <div class="product-gallery">
+    <button class="gallery-close" onclick="closeProductGallery()" aria-label="Close">×</button>
+    <div class="gallery-image">
+      <img id="galleryProductImage" src="" alt="">
+    </div>
+    <div class="gallery-navigation">
+      <button onclick="changeProductSlide(-1)">Previous</button>
+      <button onclick="changeProductSlide(1)">Next</button>
+    </div>
+    <h2 id="galleryProductName"></h2>
+    <p id="galleryProductPrice"></p>
+    <button class="primary" id="galleryOrderButton">Order on WhatsApp</button>
+  </div>
+</div>
+
 <script>
 /* SETUP: Replace this with your WhatsApp number including country code, digits only. Example India: 919876543210 */
 const WHATSAPP_NUMBER = "918142897113";
@@ -503,6 +519,49 @@ const products = [
  }
 ];
 let cart=[];
+  let currentGalleryProduct = null;
+let galleryImages = [];
+let gallerySlideIndex = 0;
+
+function openProductGallery(id) {
+  currentGalleryProduct = products.find(p => p.id === id);
+  if (!currentGalleryProduct) return;
+
+  galleryImages = currentGalleryProduct.images || [currentGalleryProduct.image];
+  gallerySlideIndex = 0;
+
+  updateProductGallery();
+  document.getElementById("productGalleryOverlay").style.display = "flex";
+}
+
+function updateProductGallery() {
+  if (!currentGalleryProduct) return;
+
+  document.getElementById("galleryProductImage").src = galleryImages[gallerySlideIndex];
+  document.getElementById("galleryProductImage").alt = currentGalleryProduct.name;
+  document.getElementById("galleryProductName").textContent = currentGalleryProduct.name;
+  document.getElementById("galleryProductPrice").textContent = money(currentGalleryProduct.price);
+
+  document.getElementById("galleryOrderButton").onclick = function () {
+    orderSingle(currentGalleryProduct.id);
+  };
+
+  document.querySelector(".gallery-navigation").style.display =
+    galleryImages.length > 1 ? "flex" : "none";
+}
+
+function changeProductSlide(direction) {
+  if (galleryImages.length <= 1) return;
+
+  gallerySlideIndex =
+    (gallerySlideIndex + direction + galleryImages.length) % galleryImages.length;
+
+  updateProductGallery();
+}
+
+function closeProductGallery() {
+  document.getElementById("productGalleryOverlay").style.display = "none";
+}
 const money=n=>"₹"+n.toLocaleString("en-IN");
 function renderProducts(){
  document.getElementById("productGrid").innerHTML=products.map(p=>`
