@@ -46,7 +46,13 @@ display:block;
 }
 .wrap{max-width:1160px;margin:auto;padding:54px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head .eyebrow{color:var(--rose)}h2{font:600 34px 'Playfair Display',serif;color:var(--wine);margin:8px 0}.section-head p{font-size:13px;color:#786871}
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{padding:22px 12px;border:1px solid #ead6dc;border-radius:12px;text-align:center;background:white}.category b{font:600 18px 'Playfair Display';color:var(--wine)}.category p{font-size:11px;color:#887780;margin:7px 0 0}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:white;border:1px solid #efdee3;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px #59243b0b}.product-image {
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{
+  background:#fff;
+  border:1px solid #eadde1;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(84,29,55,0.08);
+}.product-image {
   height: 360px;
   overflow: hidden;
   background: linear-gradient(145deg, #fffaf0, #f3e7d4);
@@ -75,9 +81,19 @@ display:block;
 }
 
 .product:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px #59243b20;
-}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{font-weight:600;color:var(--wine);margin:12px 0}.actions{display:flex;gap:8px}.actions button{
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px rgba(84,29,55,0.14);
+}.product-info{padding:17px}.product-info{padding:17px}.product-info h3{font:600 19px 'Playfair Display';margin:0 0 5px;color:var(--wine)}.muted{font-size:12px;color:#897780}.price{
+  font-weight:700;
+  color:var(--wine);
+  margin:14px 0;
+  font-size:19px;
+  letter-spacing:0.4px;
+  border-bottom:1px solid var(--gold);
+  padding-bottom:8px;
+  width:fit-content;
+}
+}.actions{display:flex;gap:8px}.actions button{
   flex:1;
   border:1px solid var(--wine);
   border-radius:25px;
@@ -91,7 +107,11 @@ display:block;
   background:var(--wine);
   color:white;
 }
-
+.actions .add:hover{
+  background:var(--gold);
+  color:var(--wine);
+  transform:translateY(-2px);
+}
 .actions .whatsapp-order{
   background:#238b59;
   color:white;
@@ -101,6 +121,7 @@ display:block;
 .actions .whatsapp-order:hover{
   background:#176b43;
   transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(35,139,89,0.25);
 }
 .story{background:var(--pink);border-radius:18px;padding:35px;text-align:center}/* Floating WhatsApp button */
 .whatsapp-float{
@@ -188,10 +209,18 @@ footer{background:#351426;color:#f8eaf0;padding:35px 22px;text-align:center}foot
     padding:18px;
   }
 
-  .actions button{
-    padding:12px 8px;
-    font-size:12px;
-  }
+  .actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+}
+
+.actions button{
+    width:100%;
+    padding:14px;
+    font-size:14px;
+    border-radius:12px;
+}
 
   .wrap{
     padding:38px 16px;
@@ -329,26 +358,29 @@ const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
 const products = [
  {
   id:1,
-  name:"Blush Pink Saree",
-  category:"Party Wear",
+  name:"Golden Elegance Saree",
+  category:"Silk Sarees",
   price:2499,
-  desc:"Elegant occasion wear",
+  desc:"Elegant traditional drape",
+  label:"Elegant Pick",
   image:"saree1.png"
  },
  {
   id:2,
-  name:"Golden Heritage Saree",
-  category:"Silk Sarees",
+  name:"Emerald Grace Saree",
+  category:"Designer Sarees",
   price:3999,
-  desc:"Traditional elegance",
+  desc:"Rich green statement style",
+  label:"Traditional Favourite",
   image:"saree2.png"
  },
  {
   id:3,
-  name:"Emerald Grace Saree",
-  category:"Designer Sarees",
+  name:"Ruby Red Saree",
+  category:"Party Wear",
   price:2899,
-  desc:"Contemporary style",
+  desc:"Occasion-ready elegance",
+  label:"Designer Edit",
   image:"saree3.png"
  }
 ];
@@ -361,7 +393,8 @@ function renderProducts(){
      <img src="${p.image}" alt="${p.name}">
    </div>
    <div class="product-info">
-     <h3>${p.name}</h3>
+  <span class="product-label">${p.label}</span>
+  <h3>${p.name}</h3>
      <div class="muted">${p.category} · ${p.desc}</div>
      <div class="price">${money(p.price)}</div>
      <div class="actions">
