@@ -44,13 +44,34 @@ header {
   gap: 18px;
 }
 
-.logo img {
-  height: 75px;
-  width: auto;
-  display: block;
-  object-fit: contain;
+.logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
 }
 
+.logo-bu {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--wine);
+}
+
+.logo-tagline {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--gold);
+  margin: 3px 0 5px;
+}
+
+.logo-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--wine);
+}
 .home-link {
   background: var(--wine);
   color: white;
