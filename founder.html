@@ -129,7 +129,24 @@ p {
   font-style: italic;
   letter-spacing: 1px;
 }
+.whatsapp-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 25px;
+  background: var(--wine);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
 
+.whatsapp-button:hover {
+  background: #6b2947;
+  transform: translateY(-2px);
+}
 footer {
   background: #351426;
   color: #f8eaf0;
@@ -164,12 +181,21 @@ footer {
 
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">
-      <img src="bu-logo.png?v=2" alt="BU Saree Studio">
+  <a class="logo" href="index.html">
+    <img src="bu-logo.png?v=2" alt="BU Saree Studio">
+  </a>
+
+  <div style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;justify-content:flex-end;">
+    <a href="https://wa.me/918142897113"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:#541d37;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">
+      WhatsApp: +91 81428 97113
     </a>
 
     <a class="home-link" href="index.html">← Back to Home</a>
   </div>
+</div>
 </header>
 
 <main>
@@ -199,6 +225,12 @@ footer {
       <p>Thank you for being part of our journey.</p>
 
       <div class="tagline">A Touch of Tradition</div>
+      <a class="whatsapp-button"
+   href="https://wa.me/918142897113"
+   target="_blank"
+   rel="noopener noreferrer">
+  Contact Us on WhatsApp
+</a>
     </div>
 
   </section>
